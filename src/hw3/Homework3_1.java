@@ -2,20 +2,23 @@ package hw3;
 
 import java.util.Scanner;
 
+// 1. 輸入三個數字,輸出: 是否為三角形, 若是則輸出是什麼三角形
 public class Homework3_1 {
     public static void main(String[] args) {
-        // 1. 使用者輸入三個數字,輸出：正三角形、等腰三角形、其它三角形或不是三角形
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter three integers");
-        int data1 = sc.nextInt();
-        int data2 = sc.nextInt();
-        int data3 = sc.nextInt();
-        int result = checkTriangle(data1, data2, data3);
+        Scanner inputSideLength = new Scanner(System.in);
+        System.out.println("Please enter the first side length: ");
+        int a = NumberUtils.getInputNumberAndFilter(0, inputSideLength);
+        System.out.println("Please enter the second side length: ");
+        int b = NumberUtils.getInputNumberAndFilter(0, inputSideLength);
+        System.out.println("Please enter the third side length: ");
+        int c = NumberUtils.getInputNumberAndFilter(0, inputSideLength);
+        int result = checkTriangle(a, b, c);
         switch (result) {
             case 0 -> System.out.println("這不是三角形!");
             case 1 -> System.out.println("其他三角形");
             case 2 -> System.out.println("等腰三角形");
             case 3 -> System.out.println("正三角形");
+            case 4 -> System.out.println("直角三角形");
         }
     }
 
@@ -25,41 +28,58 @@ public class Homework3_1 {
      * @param a 第一個邊長
      * @param b 第二個邊長
      * @param c 第三個邊長
-     * @return 0: 不是三角形, 1: 其他, 2: 等腰, 3: 正
+     * @return 0: 不是三角形, 1: 其他, 2: 等腰, 3: 正, 4: 直角, 5: 等腰直角
      */
     public static int checkTriangle(int a, int b, int c) {
         int[] sideLengthes = {a, b, c};
         int maxEqualSideLengthCount = 0;
+        int sideLengtha;
         for (int i = 0; i < sideLengthes.length; i++) {
-            int sideLength = sideLengthes[i];
+            sideLengtha = sideLengthes[i];
             int otherSideLengthSum = 0;
             int equalSideLengthCount = 0;
             for (int j = 0; j < sideLengthes.length; j++) {
                 if (i == j) continue;
                 int otherSideLength = sideLengthes[j];
                 otherSideLengthSum += otherSideLength;
-                if (sideLength == otherSideLength) {
+                if (sideLengtha == otherSideLength) {
                     equalSideLengthCount++;
                 }
             }
-            if (otherSideLengthSum <= sideLength) {
-                return 0;
+            if (otherSideLengthSum <= sideLengtha) {
+                return 0; // 不是三角形
             }
             if (equalSideLengthCount > maxEqualSideLengthCount) {
                 maxEqualSideLengthCount = equalSideLengthCount;
             }
         }
 
+        if (isRightAngleTriangle(a, b, c)) {
+            return 4;
+        }
+
         switch (maxEqualSideLengthCount) {
-            case 1 -> {
+            case 1 -> { // 等腰三角形
                 return 2;
             }
-            case 2 -> {
+            case 2 -> { // 正三角形
                 return 3;
             }
-            default -> {
+            default -> { // 其他三角形
                 return 1;
             }
         }
+    }
+
+    /**
+     * 判斷是否為直角三角形
+     *
+     * @param a 邊長1
+     * @param b 邊長2
+     * @param c 邊長3
+     * @return 是否為直角三角形
+     */
+    private static boolean isRightAngleTriangle(int a, int b, int c) {
+        return (a * a + b * b == c * c) || (a * a + c * c == b * b) || (b * b + c * c == a * a);
     }
 }

@@ -36,4 +36,8 @@ public class NumberUtils {
         }
         return i;
     }
+
+    public static int getInputNumberAndFilter(int min, Scanner scanner) {
+        return getInputNumberAndFilter(min, Integer.MAX_VALUE, scanner);
+    }
 }
