@@ -6,13 +6,12 @@ import java.util.Scanner;
 public class Homework3_1 {
     public static void main(String[] args) {
         Scanner inputSideLength = new Scanner(System.in);
-        System.out.println("Please enter the first side length: ");
-        int a = NumberUtils.getInputNumberAndFilter(0, inputSideLength);
-        System.out.println("Please enter the second side length: ");
-        int b = NumberUtils.getInputNumberAndFilter(0, inputSideLength);
-        System.out.println("Please enter the third side length: ");
-        int c = NumberUtils.getInputNumberAndFilter(0, inputSideLength);
-        int result = checkTriangle(a, b, c);
+        int[] sideLengths = new int[3];
+        for (int i = 0; i < sideLengths.length; i++) {
+            System.out.println("請依序輸入三個整數, 第" + (i+1) + "個邊長: ");
+            sideLengths[i] = NumberUtils.getInputNumberAndFilter(0, inputSideLength);
+        }
+        int result = checkTriangle(sideLengths[0], sideLengths[1], sideLengths[2]);
         switch (result) {
             case 0 -> System.out.println("這不是三角形!");
             case 1 -> System.out.println("其他三角形");
@@ -31,16 +30,16 @@ public class Homework3_1 {
      * @return 0: 不是三角形, 1: 其他, 2: 等腰, 3: 正, 4: 直角, 5: 等腰直角
      */
     public static int checkTriangle(int a, int b, int c) {
-        int[] sideLengthes = {a, b, c};
+        int[] sideLengths = {a, b, c};
         int maxEqualSideLengthCount = 0;
         int sideLengtha;
-        for (int i = 0; i < sideLengthes.length; i++) {
-            sideLengtha = sideLengthes[i];
+        for (int i = 0; i < sideLengths.length; i++) {
+            sideLengtha = sideLengths[i];
             int otherSideLengthSum = 0;
             int equalSideLengthCount = 0;
-            for (int j = 0; j < sideLengthes.length; j++) {
+            for (int j = 0; j < sideLengths.length; j++) {
                 if (i == j) continue;
-                int otherSideLength = sideLengthes[j];
+                int otherSideLength = sideLengths[j];
                 otherSideLengthSum += otherSideLength;
                 if (sideLengtha == otherSideLength) {
                     equalSideLengthCount++;

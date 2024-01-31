@@ -9,7 +9,7 @@ public class Homework3_3Advanced {
         Scanner inputUnwantedNum = new Scanner(System.in);
         System.out.print("請輸入討厭的數字(1~9): ");
         int unwantedNum = NumberUtils.getInputNumberAndFilter(1, 9, inputUnwantedNum);
-        int[] computerNumberSelection = BigLottery.randomNumberArray(1, 49, 6, unwantedNum);
+        int[] computerNumberSelection = RandomArrays.randomNumberArray(1, 49, 6, unwantedNum);
         for (int i = 0; i < 6; i++) {
             System.out.print(computerNumberSelection[i] + " ");
         }
