@@ -8,7 +8,7 @@ public class RandomArrays {
      * @param max 範圍上限
      * @param size 選幾個數字
      * @param unwantedNumber 不想要出現的數字(1~9)
-     * @return 一組含6個數字的陣列
+     * @return 一組符合size大小的陣列
      */
     public static int[] randomNumberArray(int min, int max, int size, int unwantedNumber) {
         Integer[] nums = new Integer[size];
@@ -34,5 +34,9 @@ public class RandomArrays {
             pickCount++;
         }
         return returnNums;
+    }
+
+    public static int[] randomNumberArray(int min, int max, int size) {
+        return randomNumberArray(min, max, size, -1);
     }
 }

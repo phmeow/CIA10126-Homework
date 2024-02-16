@@ -1,15 +1,18 @@
 package hw3;
 
+import hw6.ScannerService;
+
 import java.util.Scanner;
 
 // 1. 輸入三個數字,輸出: 是否為三角形, 若是則輸出是什麼三角形
 public class Homework3_1 {
     public static void main(String[] args) {
-        Scanner inputSideLength = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        ScannerService scannerService = new ScannerService(scanner);
         int[] sideLengths = new int[3];
         for (int i = 0; i < sideLengths.length; i++) {
             System.out.println("請依序輸入三個整數, 第" + (i+1) + "個邊長: ");
-            sideLengths[i] = NumberUtils.getInputNumberAndFilter(0, inputSideLength);
+            sideLengths[i] = scannerService.getInputNumberAndFilter(0);
         }
         int result = checkTriangle(sideLengths[0], sideLengths[1], sideLengths[2]);
         switch (result) {
