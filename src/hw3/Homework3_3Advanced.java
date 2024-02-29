@@ -12,7 +12,7 @@ public class Homework3_3Advanced {
         ScannerService scannerService = new ScannerService(scanner);
 
         System.out.print("請輸入討厭的數字(1~9): ");
-        int unwantedNum = scannerService.getInputNumberAndFilter(1, 9);
+        int unwantedNum = scannerService.getInputIntegerAndFilter(1, 9);
         int[] computerNumberSelection = RandomArrays.randomNumberArray(1, 49, 6, unwantedNum);
         for (int i = 0; i < 6; i++) {
             System.out.print(computerNumberSelection[i] + " ");

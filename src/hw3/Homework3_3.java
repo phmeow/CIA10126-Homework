@@ -12,7 +12,7 @@ public class Homework3_3 {
         ScannerService scannerService = new ScannerService(scanner);
 
         System.out.print("請輸入討厭的數字(1~9): ");
-        int unwantedNum = scannerService.getInputNumberAndFilter(1, 9);
+        int unwantedNum = scannerService.getInputIntegerAndFilter(1, 9);
         int row = 0;
         System.out.print("阿文可選：");
         for (int i = 1; i < 50; i++) {

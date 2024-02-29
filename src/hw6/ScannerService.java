@@ -16,26 +16,30 @@ public class ScannerService {
      * @param max 範圍上限
      * @return 檢查完的輸入數字
      */
-    public int getInputNumberAndFilter(int min, int max) {
-        int i;
+    public double getInputDoubleAndFilter(double min, double max) {
+        double i;
         try {
-            i = Integer.parseInt(scanner.next());
+            i = Double.parseDouble(scanner.next());
         } catch (NumberFormatException e) {
-            System.out.println("你輸入的不是整數, 請輸入整數: ");
-            return getInputNumberAndFilter(min, max);
+            System.out.println("你輸入的不是數字, 請輸入數字: ");
+            return getInputDoubleAndFilter(min, max);
         }
         if (i > max || i < min) {
             System.out.println("輸入的數字不在範圍內, 請重試: ");
-            return getInputNumberAndFilter(min, max);
+            return getInputDoubleAndFilter(min, max);
         }
         return i;
     }
 
-    public int getInputNumberAndFilter(int min) {
-        return getInputNumberAndFilter(min, Integer.MAX_VALUE);
+    public int getInputIntegerAndFilter(int min, int max) {
+        return (int) getInputDoubleAndFilter(min, max);
     }
 
-    public int getInputNumberAndFilter() {
-        return getInputNumberAndFilter(Integer.MIN_VALUE, Integer.MAX_VALUE);
+    public int getInputIntegerAndFilter(int min) {
+        return getInputIntegerAndFilter(min, Integer.MAX_VALUE);
+    }
+
+    public int getInputIntegerAndFilter() {
+        return getInputIntegerAndFilter(Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 }

@@ -12,7 +12,7 @@ public class Homework3_2 {
         ScannerService scannerService = new ScannerService(scanner);
 
         System.out.print("請輸入整數 0~9: ");
-        while (scannerService.getInputNumberAndFilter(0, 9) != answer) {
+        while (scannerService.getInputIntegerAndFilter(0, 9) != answer) {
             System.out.println("請再試一次! 請輸入整數 0~9: ");
         }
         System.out.println("猜對了, 答案就是 " + answer);

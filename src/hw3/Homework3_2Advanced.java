@@ -12,14 +12,14 @@ public class Homework3_2Advanced {
         ScannerService scannerService = new ScannerService(scanner);
 
         System.out.print("請輸入整數 0~100: ");
-        int guessNum = scannerService.getInputNumberAndFilter(0, 100);
+        int guessNum = scannerService.getInputIntegerAndFilter(0, 100);
         while (guessNum != answer) {
             if (guessNum > answer) {
                 System.out.println("大於正確答案, 請再試一次! 請輸入整數 0~100: ");
             } else {
                 System.out.println("小於正確答案, 請再試一次! 請輸入整數 0~100: ");
             }
-            guessNum = scannerService.getInputNumberAndFilter(0, 100);
+            guessNum = scannerService.getInputIntegerAndFilter(0, 100);
         }
         System.out.println("猜對了, 答案就是 " + answer);
     }

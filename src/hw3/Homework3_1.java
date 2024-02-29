@@ -12,7 +12,7 @@ public class Homework3_1 {
         int[] sideLengths = new int[3];
         for (int i = 0; i < sideLengths.length; i++) {
             System.out.println("請依序輸入三個整數, 第" + (i+1) + "個邊長: ");
-            sideLengths[i] = scannerService.getInputNumberAndFilter(0);
+            sideLengths[i] = scannerService.getInputIntegerAndFilter(0);
         }
         int result = checkTriangle(sideLengths[0], sideLengths[1], sideLengths[2]);
         switch (result) {

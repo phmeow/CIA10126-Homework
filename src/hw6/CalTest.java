@@ -9,9 +9,9 @@ public class CalTest {
         int i = 0;
         while (i == 0) {
             System.out.println("請輸入底數x: ");
-            int xInt = scannerService.getInputNumberAndFilter();
+            int xInt = scannerService.getInputIntegerAndFilter();
             System.out.println("請輸入指數y: ");
-            int yInt = scannerService.getInputNumberAndFilter();
+            int yInt = scannerService.getInputIntegerAndFilter();
             try {
                 System.out.println(xInt + " 的 " + yInt + " 次方是 " + Calculator.powerXY(xInt, yInt));
                 i++;
